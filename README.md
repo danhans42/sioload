@@ -9,13 +9,9 @@ The client is written in Python 3, and has been tested on Python 3.7 on both Win
 
 You can use two speeds - 115,200bps or 345,600bps. Once you have selected the requried speed on the PSX, use the corresponding on the client..
 
-   usage :  sioload.py <command> <port> <file>
-
 commands
      -run : upload & execute PSX-EXE @115.2k (PSXSERIAL/UNIROM/HITSERIAL compatible)
      -trun: upload & execute PSX-EXE @345.6k (SIOLOADER only)
-
-where <port> is the name of your serial port and <file> is the name of the file to upload/download
 
       eg  : sioload.py -run /dev/ttyUSB0 greentro.exe
             sioload.py -trun COM5 trancetro.exe
