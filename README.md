@@ -1,4 +1,4 @@
-# sioload
+# sioloader
 SIO Loader for Sony PlayStation Consoles
 
 Basically its the source of Serial v1.3 by Hitmen but with selectabe serial speed.
