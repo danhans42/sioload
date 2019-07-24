@@ -28,8 +28,6 @@ static struct XF_HDR * head;
 	int id;
 	int i=0;
 
-main()
-{      
 	u_long sync;
 	u_long f_len;
 	u_long x_addr;
@@ -37,10 +35,19 @@ main()
 	u_long padRead;
 	char * write_addr;
 
+main()
+{      
+
+
 	PadInit(0);
 	DelSIO();
 	StopCallback();
 	DispInit();
+	FntPrint("Videomode   : ");
+	if (*(char *)0xbfc7ff52=='E')
+  		FntPrint("PAL\n");
+	else
+  	FntPrint("NTSC\n");
 
 
 	FntPrint("\n\n\n\n\n\n\n\n\n                     <R1> FOR 115k SIOLOADER\n\n                     <R2> FOR 345k SIOLOADER");
@@ -53,45 +60,8 @@ main()
 	while (PadRead(0)&PADR2);
 	FntPrint("\n345k SIOLOADER");
 	initt_sio();
+	sioload();
 	
-	PadStop();
-	FntPrint("\n\n\n\n\n\n\n\n\n\n\n                        WAITING FOR CLIENT\n"); 
-	FntFlush(-1);
-
-
-	while (sync != 99){
-		sync = read_sio();
-	}
-
-	FntPrint("\n\n\n\n\n\n\n\n\n\n\n\n                           Sync received\n");
-	FntFlush(-1);
-
-	for (i=0;i<2048;i++){
-		header[i] = read_sio();
-	}
-    x_addr = GetLongData();
-	write_addr =(char *) GetLongData();
-	f_len = GetLongData();
-
-	FntPrint("\n\n\n\n\n\n\n\n\n\n\n\n                          Receiving Data\n"); 
-	FntFlush(-1);
-
-	for (count=0;count<f_len;count++){
-		*write_addr = read_sio();
-		write_addr++;
-	}
-	FntPrint("\n\n\n\n\n\n\n\n\n\n\n\n                             EXECUTE!!!\n"); 
-	FntFlush(-1);
-	PadStop();
-	ResetGraph(3);              
-	StopCallback();
-
-	head = (struct XF_HDR *)header;
-	head->exec.s_addr = STACKP;
-	head->exec.s_size = 0;
-	EnterCriticalSection();
-	Exec(&(head->exec),1,0);
-
 }
 
 
@@ -141,11 +111,6 @@ u_long GetLongData(void)
     return (dat); 
 }
 
-void sioload()
-{
-
-}
-
 void DispInit() {
 	if (*(char *)0xbfc7ff52=='E')
 		SetVideoMode(MODE_PAL);
@@ -158,4 +123,47 @@ void DispInit() {
 	SetDispMask(1); 
 	FntLoad (960,256);
 	SetDumpFnt(id = FntOpen(0,0,512,240,1,1024));
+}
+
+void sioload() {
+
+	PadStop();
+	FntPrint("\n\n\n\n\n\n\n\n\n\n\n                        WAITING FOR CLIENT\n"); 
+	FntFlush(-1);
+
+
+	while (sync != 99){
+		sync = read_sio();
+	}
+
+	FntPrint("\n\n\n\n\n\n\n\n\n\n\n\n                           Sync received\n");
+	FntFlush(-1);
+
+	for (i=0;i<2048;i++){
+		header[i] = read_sio();
+	}
+    x_addr = GetLongData();
+	write_addr =(char *) GetLongData();
+	f_len = GetLongData();
+
+	FntPrint("\n\n\n\n\n\n\n\n\n\n\n\n                          Receiving Data\n"); 
+	FntFlush(-1);
+
+	for (count=0;count<f_len;count++){
+		*write_addr = read_sio();
+		write_addr++;
+	}
+	FntPrint("\n\n\n\n\n\n\n\n\n\n\n\n                             EXECUTE!!!\n"); 
+	FntFlush(-1);
+	PadStop();
+	ResetGraph(3);              
+	StopCallback();
+
+	head = (struct XF_HDR *)header;
+	head->exec.s_addr = STACKP;
+	head->exec.s_size = 0;
+	EnterCriticalSection();
+	Exec(&(head->exec),1,0);
+
+
 }
