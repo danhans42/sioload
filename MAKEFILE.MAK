@@ -8,5 +8,7 @@ all:
 	del sioload.cpe
     del sioload.sym
     del mem.map
+rom:	
+	copy /B romprod/romprod.rom + sioload.exe sioload.rom
 
 
