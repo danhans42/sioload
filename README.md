@@ -1,4 +1,5 @@
-# sioloader
+# sioloader v1.0
+
 SIO Loader for Sony PlayStation Consoles
 
 Basically its the source of Serial v1.3 by Hitmen but with selectabe serial speed.
@@ -10,7 +11,7 @@ The client is written in Python and has been tested on Python 3.7 on both Window
 The client supports two speeds - 115,200bps or 1,036,800bps. the slower option is if you want to use the python client with PSXSERIAL/UNIROM etc). Always use the '-trun' option with SIOLOADER.
 
 commands
-     -run : upload & execute PSX-EXE @115.2k (PSXSERIAL/UNIROM compatible)
+     -run : upload & execute PSX-EXE @115.2k (PSXSERIAL/UNIROM/HITSERIAL compatible)
      -trun: upload & execute PSX-EXE @1345.6k (SIOLOADER only)
 
       eg  : sioload.py -run /dev/ttyUSB0 greentro.exe
