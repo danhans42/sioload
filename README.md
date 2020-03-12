@@ -11,10 +11,13 @@ The client is written in Python and has been tested on Python 3.7 on both Window
 The client supports two speeds - 115,200bps or 1,036,800bps. the slower option is if you want to use the python client with PSXSERIAL/UNIROM etc). Always use the '-trun' option with SIOLOADER.
 
 commands
+
      -run : upload & execute PSX-EXE @115.2k (PSXSERIAL/UNIROM/HITSERIAL compatible)
-     -trun: upload & execute PSX-EXE @1345.6k (SIOLOADER only)
+     
+     -trun: upload & execute PSX-EXE @1036.8k (SIOLOADER only)
 
       eg  : sioload.py -run /dev/ttyUSB0 greentro.exe
+      
             sioload.py -trun COM5 trancetro.exe
 
 Few notes :-
