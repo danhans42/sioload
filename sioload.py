@@ -27,7 +27,7 @@ def usage():
 	sys.stdout.write("   usage :  sioload.py <command> <port> <file>\n\n")
 	sys.stdout.write("commands\n")
 	sys.stdout.write("     -run : upload & execute PSX-EXE @115.2k (PSXSERIAL/UNIROM/HITSERIAL compatible)\n")
-	sys.stdout.write("     -trun: upload & execute PSX-EXE @345.6k (SIOLOADER only)\n\n")
+	sys.stdout.write("     -trun: upload & execute PSX-EXE @1,036.8k (SIOLOADER only)\n\n")
 	sys.stdout.write("where <port> is the name of your serial port and <file> is the name of the file to upload/download\n\n")
 	sys.stdout.write("      eg  : sioload.py -run /dev/ttyUSB0 greentro.exe\n")
 	sys.stdout.write("            sioload.py -trun COM5 trancetro.exe\n")
