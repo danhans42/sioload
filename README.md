@@ -28,6 +28,13 @@ I have only tested this with a *GENUINE* FTDI USB UARTs. If you have issues edit
 
 I can personally recommend the Sparkfun FTDI breakout board ~£12 from a local hobby supplier or Mouser etc..
 
+EDIT: March 2022.
+
+Due to a fall out on the psxdev forums it appears I am no longer welcome there. any issues please raise here.
+Alternatively I can be usually found on the psx.dev discord (visit psx.dev for more info)
+
+aao I am due to rewrite this to expand the feature aet and move away from PsyQ completely.
+
 
 
 
