@@ -33,7 +33,7 @@ EDIT: March 2022.
 Due to a fall out on the psxdev forums it appears I am no longer welcome there. any issues please raise here.
 Alternatively I can be usually found on the psx.dev discord (visit psx.dev for more info)
 
-aao I am due to rewrite this to expand the feature aet and move away from PsyQ completely.
+also I am due to rewrite this to expand the feature set and move away from PsyQ completely.
 
 
 
